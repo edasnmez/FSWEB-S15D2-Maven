@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -97,10 +98,12 @@ public class MainTest {
         Set<Task> taskSet = new HashSet<>();
         taskSet.add(task1);
         Set<Task> taskSet2 = new HashSet<>();
-        taskSet.add(task2);
+        taskSet2.add(task2);
 
-        Set<Task> totals = taskData.getUnion(taskSet, taskSet2);
-        assertEquals(totals.size(), 2);
+        List<Set<Task>> sets = List.of(taskSet, taskSet2);
+        Set<Task> totals = taskData.getUnion(sets);
+
+        assertEquals(2, totals.size());
     }
 
     @DisplayName("TaskData getIntersect() method doğru çalışıyor mu ?")

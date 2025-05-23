@@ -9,7 +9,7 @@ public class Task {
     private Priority priority;
     private Status status;
 
-    public Task(String project, String description, String assignee, Priority priority, Status status) {
+    public Task(String project, String description, String assignee, Status status , Priority priority) {
         this.project = project;
         this.description = description;
         this.assignee = assignee;

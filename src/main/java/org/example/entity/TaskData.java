@@ -36,6 +36,7 @@ public class TaskData {
         return unassignedTasks;
     }
 
+
     public Set<Task> getUnion(List<Set<Task>> sets) {
         Set<Task> union = new HashSet<>();
         for (Set<Task> set : sets) {
@@ -44,13 +45,13 @@ public class TaskData {
         return union;
     }
 
-    public Set<Task> getIntersect(Set<Task> set1, Set<Task> set2) {
+    public Set<Task> getIntersection(Set<Task> set1, Set<Task> set2) {
         Set<Task> result = new HashSet<>(set1);
         result.retainAll(set2);
         return result;
     }
 
-    public Set<Task> getDifference(Set<Task> set1, Set<Task> set2) {
+    public Set<Task> getDifferences(Set<Task> set1, Set<Task> set2) {
         Set<Task> result = new HashSet<>(set1);
         result.removeAll(set2);
         return result;
@@ -58,9 +59,9 @@ public class TaskData {
 
     public Set<Task> getCommonTasksAssignedToMultiple() {
         Set<Task> result = new HashSet<>();
-        Set<Task> annAndBob = getIntersect(annsTasks, bobsTasks);
-        Set<Task> annAndCarol = getIntersect(annsTasks, carolsTasks);
-        Set<Task> bobAndCarol = getIntersect(bobsTasks, carolsTasks);
+        Set<Task> annAndBob = getIntersection(annsTasks, bobsTasks);
+        Set<Task> annAndCarol = getIntersection(annsTasks, carolsTasks);
+        Set<Task> bobAndCarol = getIntersection(bobsTasks, carolsTasks);
 
         result.addAll(annAndBob);
         result.addAll(annAndCarol);
